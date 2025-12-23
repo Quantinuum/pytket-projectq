@@ -18,8 +18,8 @@ import pytest
 from projectq import MainEngine  # type: ignore
 from projectq.cengines._basics import ForwarderEngine  # type: ignore
 from projectq.ops import CNOT, NOT, All, H, Measure, Rz, X  # type: ignore
-from pytket.circuit import Circuit, OpType
 
+from pytket.circuit import Circuit, OpType
 from pytket.extensions.projectq import tk_to_projectq, tketBackendEngine, tketOptimiser
 
 eps = 1e-7

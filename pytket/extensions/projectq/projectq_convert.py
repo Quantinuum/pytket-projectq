@@ -16,9 +16,6 @@ from collections.abc import Iterable
 from typing import Any
 
 import numpy as np
-from pytket.circuit import Bit, Circuit, Command, Op, OpType
-from pytket.passes import AutoRebase
-from pytket.transform import Transform
 
 from projectq import MainEngine  # type: ignore
 from projectq import ops as pqo
@@ -27,6 +24,9 @@ from projectq.meta import get_control_count  # type: ignore
 from projectq.ops._command import Command as ProjectQCommand  # type: ignore
 from projectq.ops._command import apply_command
 from projectq.types._qubit import Qureg  # type: ignore
+from pytket.circuit import Bit, Circuit, Command, Op, OpType
+from pytket.passes import AutoRebase
+from pytket.transform import Transform
 
 _pq_to_tk_singleqs = {
     pqo.XGate: OpType.X,
@@ -76,12 +76,8 @@ _REBASE = AutoRebase(
         OpType.Rz,
     },
 )
-_tk_to_pq_singleqs: dict = dict(  # noqa: C402
-    (item[1], item[0]) for item in _pq_to_tk_singleqs.items()
-)
-_tk_to_pq_multiqs: dict = dict(  # noqa: C402
-    (item[1], item[0]) for item in _pq_to_tk_multiqs.items()
-)
+_tk_to_pq_singleqs: dict = {item[1]: item[0] for item in _pq_to_tk_singleqs.items()}
+_tk_to_pq_multiqs: dict = {item[1]: item[0] for item in _pq_to_tk_multiqs.items()}
 
 
 def _get_pq_command_from_tk_command(

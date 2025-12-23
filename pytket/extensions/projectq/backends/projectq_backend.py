@@ -20,6 +20,11 @@ from typing import (
 from uuid import uuid4
 
 import numpy as np
+
+import projectq  # type: ignore
+from projectq import MainEngine
+from projectq.backends import Simulator  # type: ignore
+from projectq.cengines import ForwarderEngine  # type: ignore
 from pytket.backends import (
     Backend,
     CircuitNotRunError,
@@ -32,6 +37,7 @@ from pytket.backends.backendresult import BackendResult
 from pytket.backends.resulthandle import _ResultIdTuple
 from pytket.circuit import Circuit, OpType, Qubit
 from pytket.extensions.projectq._metadata import __extension_version__
+from pytket.extensions.projectq.projectq_convert import _REBASE, tk_to_projectq
 from pytket.passes import (
     BasePass,
     DecomposeBoxes,
@@ -52,12 +58,6 @@ from pytket.predicates import (
 )
 from pytket.utils.operators import QubitPauliOperator
 from pytket.utils.results import KwargTypes
-
-import projectq  # type: ignore
-from projectq import MainEngine
-from projectq.backends import Simulator  # type: ignore
-from projectq.cengines import ForwarderEngine  # type: ignore
-from pytket.extensions.projectq.projectq_convert import _REBASE, tk_to_projectq
 
 
 def _default_q_index(q: Qubit) -> int:
