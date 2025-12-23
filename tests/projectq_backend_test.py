@@ -23,11 +23,13 @@ from collections import Counter
 import numpy as np
 import pytest
 from hypothesis import given, strategies
+
 from pytket.backends.backend import ResultHandleTypeError
 from pytket.backends.backend_exceptions import CircuitNotRunError
 from pytket.backends.resulthandle import ResultHandle
 from pytket.backends.status import StatusEnum
 from pytket.circuit import BasisOrder, Circuit, OpType, Qubit
+from pytket.extensions.projectq import ProjectQBackend
 from pytket.passes import BasePass, CliffordSimp, SequencePass
 from pytket.pauli import Pauli, QubitPauliString
 from pytket.utils.expectations import (
@@ -35,8 +37,6 @@ from pytket.utils.expectations import (
     get_pauli_expectation_value,
 )
 from pytket.utils.operators import QubitPauliOperator
-
-from pytket.extensions.projectq import ProjectQBackend
 
 warnings.filterwarnings("ignore", category=PendingDeprecationWarning)
 
