@@ -6,10 +6,10 @@ API documentation
 .. automodule:: pytket.extensions.projectq.projectq_convert
 
     .. autofunction:: tk_to_projectq
-    
+
     .. autoclass:: tketBackendEngine
         :members:
-    
+
     .. autoclass:: tketOptimiser
         :members:
 
